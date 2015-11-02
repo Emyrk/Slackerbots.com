@@ -29,6 +29,9 @@
 	
 	<body>
 
+		<!-- YouTube link -->
+		<a id="bgndVideo" class="player" data-property="{videoURL:'http://youtu.be/Y5diIT7NASg',containment:'body',autoPlay:true, mute:false, startAt:0, stopAt:0, opacity:1}"></a>
+
 		<!-- Page preloader -->
 		<div id="loading">
 			<div id="preloader">
@@ -39,7 +42,7 @@
 
 		<!-- Overlay and Star effect -->
 		<div class="global-overlay">
-			<div class="overlay skew-part">
+			<div class="overlay skew-part light-overlay">
 
 				<div id='stars'></div>
 				<div id='stars2'></div>
@@ -88,15 +91,27 @@
 		</section>
 		<!-- END - Home/Left Part -->
 
-		<!-- Cloud animation -->
-		<div id="cloud-animation">
+		<!-- OPEN - Player control -->
+		<nav id="player-nav">
+			<ul>
+				<li data-toggle="tooltip" data-placement="top" data-title="Play" data-trigger="hover">
+					<a onclick="$('#bgndVideo').playYTP()"><i class="fa fa-play"></i></a>
+				</li>
 
-	        <img src="img/cloud-01.png" alt="" id="cloud1">
-	        <img src="img/cloud-02.png" alt="" id="cloud2">
-	        <img src="img/cloud-03.png" alt="" id="cloud3">
-	        <img src="img/cloud-04.png" alt="" id="cloud4">
+				<li data-toggle="tooltip" data-placement="top" data-title="Pause" data-trigger="hover">
+					<a onclick="$('#bgndVideo').pauseYTP()"><i class="fa fa-pause"></i></a>
+				</li>
 
-	    </div>
+				<li class="full-play" data-toggle="tooltip" data-placement="top" data-title="Fullscreen" data-trigger="hover">
+					<a class="expand-player"><i class="fa fa-expand"></i></a>
+				</li>
+
+				<li class="comp-play display-none" data-toggle="tooltip" data-placement="top" data-title="Reduce" data-trigger="hover">
+					<a class="compress-player"><i class="fa fa-compress"></i></a>
+				</li>
+
+			</ul>
+		</nav> <!-- CLOSE - Player control -->
 
 		<!-- START - More Informations/Right Part -->
 		<section id="right-side" class="hide-right">
@@ -496,7 +511,10 @@
 	<script src="js/contact-me.js"></script>
 
 	<!-- Slideshow/Image plugin -->
-	<script src="js/vegas.js"></script>
+	<script src="js/vegas-youtube-mobile.js"></script>
+
+	<!-- YouTube plugin -->
+	<script src="js/jquery.mb.YTPlayer.js"></script>
 
 	<!-- Scroll plugin -->
 	<script src="js/jquery.mousewheel.js"></script>
