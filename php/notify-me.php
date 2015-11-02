@@ -31,7 +31,8 @@ require('MailChimp.php');
 if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["email"])) {
 
 	$email = $_POST["email"];
-	$dev = $_POST["dev"];
+	//$dev = $_POST["dev"];
+	$dev = $_POST["notify_radio"];
 	header('HTTP/1.1 200 OK');
 	header('Status: 200 OK');
 	header('Content-type: application/json');
@@ -57,7 +58,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["email"])) {
 
 		// The part for the storage in Mailchimp
 		} elseif ($STORE_MODE == "mailchimp") {
-
+			$step = "1";
+			$email = strtolower($email);
 			$MailChimp = new \Drewm\MailChimp($API_KEY);
 			if ($dev == "true"){
 				$result = $MailChimp->call('lists/subscribe', array(
@@ -68,6 +70,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["email"])) {
 											'replace_interests' => false,
 											'send_welcome'      => true,
 									));
+									$step=2;
 			} elseif($dev == "false"){
 				$result = $MailChimp->call('lists/subscribe', array(
 			                'id'                => $LIST_ID,
@@ -77,6 +80,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["email"])) {
 			                'replace_interests' => false,
 			                'send_welcome'      => true,
 			            ));
+									$step=3;
 			} else{
 				$result = $MailChimp->call('lists/subscribe', array(
 			                'id'                => $NONE_LIST_ID,
@@ -86,17 +90,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["email"])) {
 			                'replace_interests' => false,
 			                'send_welcome'      => true,
 			            ));
+									$step=4;
 			}
 			// SUCCESS SENDING
 			if($result["email"] == $email) {
 				echo json_encode(array(
-						"status" => "success"
+						"status" => "success",
+						"dev" => $dev
 					));
 			// ERROR SENDING
 			} else {
 				echo json_encode(array(
 						"status" => "error",
-						"type" => $result["name"]
+						"type" => $result["name"],
+						"dev" => $dev,
+						"step" => $step,
+						"email" => $result["email"],
+						"actemail" => $email
 					));
 			}
 		// ERROR

@@ -7,9 +7,19 @@
     e.fn.notifyMe = function(t) {
         var r = e(this);
         var i = e(this).find("input[name=email]");
+
+
+        var x = $('#radio3').attr("value");
+        var note = e(this).find("input[name=notify_radio]");
         var s = e(this).attr("action");
         var o = e(this).find(".note");
         e(this).on("submit", function(t) {
+          var selectedVal = "";
+          var selected = $("input[type='radio'][name='notify_radio']:checked");
+            if (selected.length > 0) {
+                selectedVal = selected.val();
+          }
+          var y = selectedVal;
             t.preventDefault();
             var h = i.val();
             var p = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -22,7 +32,8 @@
                     type: "POST",
                     url: s,
                     data: {
-                        email: h
+                        email: h,
+                        notify_radio : y
                     },
                     dataType: "json",
                     error: function(e) {
@@ -68,6 +79,6 @@
         })
     }
 
-    
+
 
 })(jQuery)
