@@ -376,9 +376,24 @@
 		                        <div class="controls">
 
 		                        	<!-- Field  -->
-		                        	<input type="text" id="mail-sub" name="email" placeholder="Click here to write your email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Click here to write your email'" class="form-control email srequiredField" />
-
-		                        	<!-- Spinner top left during the submission -->
+															<div class="radio-fields">
+																<div class="radD">
+																	<input type="radio" id="radio1" name="dev" value="false" class="radio" >
+																	<label for="radio1">I need a bot</label>
+																</div>
+																<div class="radD">
+																	<input type="radio" id="radio2" name="dev" value="true" class="radio">
+																	<label for="radio2">I make bots</label>
+																</div>
+																<div class="radD">
+																	<input type="radio" id="radio3" name="dev" value="none" checked class="radio">
+																	<label for="radio3">Neither</label>
+																</div>
+															</div>
+															<div>
+																<input type="text" id="mail-sub" name="email" placeholder="Click here to write your email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Click here to write your email'" class="form-control email srequiredField" />
+															</div>
+															<!-- Spinner top left during the submission -->
 		                        	<i class="fa fa-spinner opacity-0"></i>
 
 		                            <!-- Button -->

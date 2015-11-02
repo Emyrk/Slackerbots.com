@@ -34,7 +34,92 @@
 @import url("http://fonts.googleapis.com/css?family=Montserrat:400,700");
 @import url("http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700");
 /*
-* http://meyerweb.com/eric/tools/css/reset/ 
+ * My Styles
+ */
+
+
+
+.radD{
+ 	clear: both;
+  overflow: auto;
+ }
+
+.radio-fields {
+  display: inline-block;
+  overflow: auto;
+  margin-bottom: 2em;
+}
+
+ label {
+   width: 200px;
+   border-radius: 3px;
+   border: 1px solid #D1D3D4
+ }
+
+ /* hide input */
+ input.radio:empty {
+ 	margin-left: -999px;
+ }
+
+ /* style label */
+ input.radio:empty ~ label {
+ 	position: relative;
+ 	float: left;
+ 	line-height: 2.5em;
+ 	text-indent: 3.25em;
+ 	margin-top: 1em;
+ 	cursor: pointer;
+ 	-webkit-user-select: none;
+ 	-moz-user-select: none;
+ 	-ms-user-select: none;
+ 	user-select: none;
+ }
+
+ input.radio:empty:first-of-type ~ label {
+   margin-top: 0;
+ }
+
+ input.radio:empty ~ label:before {
+ 	position: absolute;
+ 	display: block;
+ 	top: 0;
+ 	bottom: 0;
+ 	left: 0;
+ 	content: '';
+ 	width: 2.5em;
+ 	background: #FFF;
+ 	border-radius: 3px;
+ }
+
+ /* toggle hover */
+ input.radio:hover:not(:checked) ~ label:before {
+ 	content:'\2714';
+ 	text-indent: .3em;
+ 	color: #C2C2C2;
+ }
+
+ input.radio:hover:not(:checked) ~ label {
+ 	color: #888;
+ }
+
+ /* toggle on */
+ input.radio:checked ~ label:before {
+ 	content:'\2714';
+ 	text-indent: .3em;
+ 	color: #FFF;
+ 	background-color: #00af94;
+ }
+
+ input.radio:checked ~ label {
+ 	color: #00af94;
+ }
+
+ /* radio focus */
+ input.radio:focus ~ label:before {
+ 	box-shadow: 0 0 0 3px #999;
+ }
+/*
+* http://meyerweb.com/eric/tools/css/reset/
 * v2.0 | 20110126
 * License: none (public domain)
 */
@@ -107,7 +192,7 @@ table {
   margin: 0 auto;
 }
 #loading #preloader:after {
-  content: "Phly is loading";
+  content: "Slackerbots is loading";
   /* Text under the circles */
   position: absolute;
   text-transform: uppercase;
@@ -1079,7 +1164,7 @@ sup {
 #subscribe #notifyMe {
   max-width: 450px;
   margin: auto;
-  margin-top: 2em;
+  margin-top: 1em;
 }
 #subscribe #notifyMe .form-group {
   margin-bottom: 1em;
