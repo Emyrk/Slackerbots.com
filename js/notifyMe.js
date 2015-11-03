@@ -7,10 +7,6 @@
     e.fn.notifyMe = function(t) {
         var r = e(this);
         var i = e(this).find("input[name=email]");
-
-
-        var x = $('#radio3').attr("value");
-        var note = e(this).find("input[name=notify_radio]");
         var s = e(this).attr("action");
         var o = e(this).find(".note");
         e(this).on("submit", function(t) {
